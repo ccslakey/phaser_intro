@@ -13,7 +13,7 @@ function preload() {
     game.load.image('ground', 'assets/platform.png');
     game.load.image('star', 'assets/star.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
-
+    game.load.image('cloud', 'assets/cloud-platform.png')
 }
 
 // actions to declare the initial state of the game canvaas
@@ -47,7 +47,7 @@ function create() {
 	    ledge = platforms.create(-150, 250, 'ground');
 
 	    ledge.body.immovable = true;	
-		game.add.sprite(0, 0, 'star');
+		
 
 	// The player and its settings
 	    player = game.add.sprite(32, game.world.height - 150, 'dude');
@@ -57,7 +57,7 @@ function create() {
 
 	    //  Player physics properties. Give the little guy a slight bounce.
 	    player.body.bounce.y = 0.2;
-	    player.body.gravity.y = 300;
+	    player.body.gravity.y = 500;
 	    player.body.collideWorldBounds = true;
 
 	    //  Our two animations, walking left and right.
@@ -85,6 +85,8 @@ function create() {
 	    }    
 	    scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 	 
+	 	var cloud1 = new CloudPlatform(this.game, 0, 0, 'cloud-platform', this.clouds);
+
 }
 
 
@@ -99,7 +101,7 @@ function update() {
     if (cursors.left.isDown)
     {
         //  Move to the left
-        player.body.velocity.x = -150;
+        player.body.velocity.x = -550;
 
         player.animations.play('left');
     }
@@ -121,7 +123,7 @@ function update() {
     //  Allow the player to jump if they are touching the ground.
     if (cursors.up.isDown && player.body.touching.down)
     {
-        player.body.velocity.y = -650;
+        player.body.velocity.y = -450;
     }
 
     game.physics.arcade.collide(stars, platforms);
@@ -142,3 +144,50 @@ function collectStar (player, star) {
     scoreText.text = 'Score: ' + score;
 
 }
+
+
+function CloudPlatform (game, x, y, key, group) {
+
+	if (typeof group === 'undefined') { group = game.world; }
+
+    Phaser.Sprite.call(this, game, x, y, key);
+
+    game.physics.arcade.enable(this);
+
+    this.anchor.x = 0.5;
+
+    this.body.customSeparateX = true;
+    this.body.customSeparateY = true;
+    this.body.allowGravity = false;
+    this.body.immovable = true;
+
+    this.playerLocked = false;
+
+    group.add(this);
+}
+
+CloudPlatform.prototype = Object.create(Phaser.Sprite.prototype);
+    CloudPlatform.prototype.constructor = CloudPlatform;
+    CloudPlatform.prototype.addMotionPath = function (motionPath) {
+        this.tweenX = this.game.add.tween(this.body);
+        this.tweenY = this.game.add.tween(this.body);
+        //  motionPath is an array containing objects with this structure
+        //  [
+        //   { x: "+200", xSpeed: 2000, xEase: "Linear", y: "-200", ySpeed: 2000, yEase: "Sine.easeIn" }
+        //  ]
+        for (var i = 0; i < motionPath.length; i++)
+        {
+            this.tweenX.to( { x: motionPath[i].x }, motionPath[i].xSpeed, motionPath[i].xEase);
+            this.tweenY.to( { y: motionPath[i].y }, motionPath[i].ySpeed, motionPath[i].yEase);
+        }
+        this.tweenX.loop();
+        this.tweenY.loop();
+    };
+    CloudPlatform.prototype.start = function () {
+        this.tweenX.start();
+        this.tweenY.start();
+    };
+    CloudPlatform.prototype.stop = function () {
+        this.tweenX.stop();
+        this.tweenY.stop();
+    };

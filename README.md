@@ -20,18 +20,34 @@ Phaser is pretty fun to build with
 * very active, on github, many frequent and recent pulls, merges, etc. much open source 
 
 ###Roadblocks?
-* Separating js into neat little folders breaks things.
+* Requiring JS files can be tricky
+* chrome devtools can't help you here
+
+>Luke: Your overconfidence is your weakness.
+ 
+>The Emperor: Your faith in your ~~friends~~ devtools is yours. 
 
 
 ###Takeaways
 ![tony sucks](http://cdn3.sbnation.com/assets/3723939/romopick.gif)
- 
+
+* update your libs!
+* the version changes overnight sometimes...if there is a problem in min.js this is often the problem
 
 
 ###Show an example
+* Curvatron: http://bravebunny.github.io/curvatron/
+
 From: https://phaser.io/examples
 
 * https://phaser.io/examples/v2/filters/checker-wave
 * https://phaser.io/examples/v2/filters/kaleidoscope
 * https://phaser.io/examples/v2/filters/lightwave
 * https://phaser.io/examples/v2/particles/collision
+
+Some sweet reading:
+
+
+* Loading a level from JSON data: https://phaser.io/news/2015/05/how-to-load-level-data-from-json-tutorial
+* Along the same lines: http://www.emanueleferonato.com/2015/05/12/phaser-tutorial-html5-player-movement-as-seen-in-ipad-magick-game-using-mostly-tile-maps/
+* Optimization: http://evilmousestudios.com/IsoCitySim/OptimizingJavascriptGames
