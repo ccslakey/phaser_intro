@@ -4,6 +4,7 @@
 
 
 ####Not those Phasers!
+* https://phaser.io/
 * https://github.com/photonstorm/phaser
 * https://phaser.io/docs
 
@@ -30,6 +31,8 @@ Phaser is pretty fun to build with
 
 ###Takeaways
 ![tony sucks](http://cdn3.sbnation.com/assets/3723939/romopick.gif)
+
+![letsgobo](https://nesncom.files.wordpress.com/2013/12/navorro-bowman.gif?w=480&h=270)
 
 * update your libs!
 * the version changes overnight sometimes...if there is a problem in min.js this is often the problem
