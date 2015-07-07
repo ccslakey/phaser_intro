@@ -8,8 +8,6 @@ Not those Phasers!
 *https://phaser.io/docs
 
 
-
-
 ###Why do I care??
 
 Phaser is pretty fun to build with
@@ -29,4 +27,9 @@ Phaser is pretty fun to build with
 
 
 ###Show an example
+From: https://phaser.io/examples
 
+*https://phaser.io/examples/v2/filters/checker-wave
+*https://phaser.io/examples/v2/filters/kaleidoscope
+*https://phaser.io/examples/v2/filters/lightwave
+*https://phaser.io/examples/v2/particles/collision
