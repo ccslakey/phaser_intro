@@ -12,11 +12,17 @@ Not those Phasers!
 
 Phaser is pretty fun to build with
 *simple physics engines-wow!
+
 *easy animation and sprite manipulation
+
 *designed with a mobile-first browser
+
 *device scaling as well because it's just that awesome
+
 *particle effects-SELL YOUR PS4 NOW FOLKS
-*very active, on github, many frequent and recent pull requests. Developer's wet dream
+
+*very active, on github, many frequent and recent pull 
+requests. Developer's wet dream
 
 ###Roadblocks?
 *Separating js into neat little folders breaks things.
